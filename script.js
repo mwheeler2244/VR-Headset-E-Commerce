@@ -97,10 +97,19 @@ function quantityChange(event) {
   updateCartBadge();
 }
 
+
 // Add to Cart Function
 function addCartClicked(event) {
-  var button = event.target;
-  var shopProducts = button.closest(".product__box");
+  var button = event.target.closest(".btn.cart__icon"); // Ensure you get the closest button element
+  var shopProducts;
+
+  // Determine the page type and use the appropriate class names
+  if (document.body.classList.contains("index-page")) {
+    shopProducts = button.closest(".product__box");
+  } else if (document.body.classList.contains("accessories-page")) {
+    shopProducts = button.closest(".accessories__box");
+  }
+
   var titleElement = shopProducts.querySelector(".product__text-title");
   var priceElement = shopProducts.querySelector(".price");
   var imgElement = shopProducts.querySelector(".product__img");
@@ -115,13 +124,7 @@ function addCartClicked(event) {
       updateTotal();
       updateLocalStorage();
       updateCartBadge();
-    } else {
-      console.error("Image source is undefined");
     }
-  } else {
-    console.error(
-      "One or more elements could not be found within shopProducts."
-    );
   }
 }
 
@@ -402,32 +405,109 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCartItems();
 });
 
-// link to accessories page
+// init products for accessories page
 
-const accessoriesButton = document.querySelector(".btn__accessories");
+const products = [
+  {
+    name: "VIVE Full Face Tracker",
+    url: "images/addon1.jpg",
+    category: "trackers",
+    price: 49.99,
+  },
+  {
+    name: "VIVE USB-C Dock (5 Ports)",
+    url: "images/addon2.jpg",
+    category: "docks",
+    price: 29.99,
+  },
+  {
+    name: "VIVE Ultimate Tracker 3+1 Kit",
+    url: "images/addon3.jpg",
+    category: "trackers",
+    price: 69.99,
+  },
+  {
+    name: "VIVE Ultimate Tracker",
+    url: "images/addon4.jpg",
+    category: "trackers",
+    price: 49.99,
+  },
+  {
+    name: "VIVE Wireless Dongle",
+    url: "images/addon5.jpg",
+    category: "dongle",
+    price: 19.99,
+  },
+  {
+    name: "TrackStraps for VIVE Ultimate Tracker + Dance Dash Game Key",
+    url: "images/addon6.jpg",
+    category: "trackers",
+    price: 65.99,
+  },
+  {
+    name: "VIVE Wrist Tracker",
+    url: "images/addon7.jpg",
+    category: "trackers",
+    price: 99.99,
+  },
+  {
+    name: " VIVE Tracker",
+    url: "images/addon8.jpg",
+    category: "trackers",
+    price: 119.99,
+  },
+];
 
-accessoriesButton.addEventListener("click", () => {
-  window.location.href = "accessories.html";
+const productsWrapper = document.querySelector(".accessories__container-page");
+const checkBoxes = document.querySelectorAll(".check");
+const filtersContainer = document.querySelector(".filters__container");
+
+// Init product element array
+const productsElements = [];
+
+// Event list for filtering
+filtersContainer.addEventListener("change", filterProducts);
+
+// Loop over products
+products.forEach((product) => {
+  const productElement = document.createElement("div");
+  productElement.className = "accessories__box";
+  productElement.innerHTML = `
+            <span class="accessories__head" >New</span>
+            <img class="product__img" src="${product.url}" alt="" />
+            <h3 class="product__text-title">${product.name}</h3>
+            <p class="price" >${product.price}</p>
+           <button class="btn cart__icon"><p class="button-text">Buy</p> </button>
+  `;
+  productsElements.push(productElement);
+  productsWrapper.appendChild(productElement);
+
+  const addToCartButton = productElement.querySelector(".cart__icon");
+  console.log("Button found:", addToCartButton);
+  addToCartButton.addEventListener("click", (event) => {
+    console.log("Button clicked");
+    addCartClicked(event);
+  });
 });
 
-const productLink = document.querySelector(".product__link");
-const dropdownMenu = productLink.querySelector("ul");
-const dropdownIcon = document.getElementById("dropdown-icon");
+// Filter products checkboxes
+function filterProducts() {
+  const checkedCategories = Array.from(checkBoxes)
+    .filter((check) => check.checked)
+    .map((check) => check.id);
 
-productLink.addEventListener("click", (event) => {
-  event.stopPropagation();
-  dropdownMenu.classList.toggle("show");
-  dropdownIcon.classList.toggle("fa-angle-down"); // Toggle the down arrow
-  dropdownIcon.classList.toggle("fa-angle-up"); // Toggle the up arrow
-});
+  // Loop over products
+  productsElements.forEach((productElement, index) => {
+    const product = products[index];
 
-document.addEventListener("click", (event) => {
-  if (
-    !productLink.contains(event.target) &&
-    !dropdownMenu.contains(event.target)
-  ) {
-    dropdownMenu.classList.remove("show"); // Hide the dropdown menu
-    dropdownIcon.classList.remove("fa-angle-up"); // Revert icon to down arrow
-    dropdownIcon.classList.add("fa-angle-down");
-  }
-});
+    // Check if product's category matches the selected checkboxes
+    const isInCheckedCategory =
+      checkedCategories.length === 0 || // If no checkboxes are checked, show all products
+      checkedCategories.includes(product.category);
+
+    // Show or hide product based on filter
+    productElement.style.display = isInCheckedCategory ? "grid" : "none";
+  });
+}
+
+
