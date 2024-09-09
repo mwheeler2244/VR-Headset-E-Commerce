@@ -604,22 +604,37 @@ footer p {
   font-size: var(--font-300);
 }
 
-/*=============== ACCESSORIES ===============*/
+/*=============== ACCESSORIES.html ===============*/
+.accessories__page {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 5rem;
+}
+.filters {
+  padding-top: 250px;
+  max-width: 150px;
+}
+.filters > * {
+  margin-bottom: var(--margin-400);
+}
+label {
+  font-size: var(--font-300);
+}
 
 .accessories__container-page {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: var(--gap-400);
-  margin-top: var(--margin-800);
+  padding-top: 250px;
 }
 .accessories__box {
   border: 1px dotted rgba(0, 0, 0, 0.527);
   display: grid;
-  gap: var(--gap-600);
+  gap: var(--gap-400);
   justify-items: center;
   align-items: center;
-  padding-block: var(--padding-600);
+  padding-block: var(--padding-400);
   text-align: center;
+  max-width: 350px;
 }
 .accessories__head {
   justify-self: start;
@@ -628,8 +643,8 @@ footer p {
   font-weight: var(--fw-lrg);
 }
 .accessories__container-page img {
-  width: 175px;
-  height: 175px;
+  width: 150px;
+  height: 150px;
 }
 
 .accessories__box h3 {
