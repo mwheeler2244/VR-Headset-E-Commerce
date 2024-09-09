@@ -637,7 +637,9 @@ label {
   align-items: center;
   padding-block: var(--padding-400);
   text-align: center;
-  max-width: 350px;
+  min-width: 275px;
+    margin-inline: auto;
+  margin-bottom: var(--margin-400);
 }
 .accessories__head {
   justify-self: start;
