@@ -67,6 +67,9 @@ p {
 span {
   font-size: var(--font-300);
 }
+a {
+  text-decoration: none;
+}
 img,
 picture,
 video,
