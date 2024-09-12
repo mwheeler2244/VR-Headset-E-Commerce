@@ -232,7 +232,7 @@ nav {
   font-weight: var(--fw-med);
   transition: 0.3s ease;
 }
-.nav__links a:not(.product__link)::before {
+.nav__links a::before {
   position: absolute;
   content: "";
   top: 25px;
@@ -243,7 +243,7 @@ nav {
   height: 2px;
   transition: 500ms ease;
 }
-.nav__links a:not(.product__link):hover::before {
+.nav__links a:hover::before {
   width: 100%;
   background: var(--accentColor);
 }
