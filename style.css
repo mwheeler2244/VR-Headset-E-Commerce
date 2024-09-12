@@ -53,6 +53,11 @@ h3 {
   line-height: 1.1;
   color: white;
 }
+h1 {
+  font-size: var(--font-600);
+  font-weight: var(--fw-med);
+  text-shadow: 2px 2px 2px black;
+}
 h2 {
   font-weight: var(--fw-med);
   font-size: var(--font-500);
@@ -86,7 +91,7 @@ select {
   font: inherit;
 }
 .wrapper {
-  width: min(100% - 32px, 1240px);
+  width: min(100% - 24px, 1240px);
   margin-inline: auto;
 }
 section,
@@ -189,8 +194,8 @@ button i {
 header {
   position: relative;
   min-height: 90vh;
-  background-image: url(./images/desktop/image-hero.jpg);
-  background-position: center;
+  background-image: url(./images/heroVR.jpg);
+  background-position: bottom;
   background-size: cover;
 }
 .hamburger {
@@ -384,11 +389,6 @@ button {
   padding: 1rem 2.25rem;
 }
 
-.hero__box h1 {
-  font-size: var(--font-600);
-  font-weight: var(--fw-sm);
-}
-
 /*=============== ABOUT ===============*/
 
 .about__container {
@@ -502,6 +502,10 @@ button {
 }
 
 /*=============== TESTIMONIALS ===============*/
+.testimonials {
+  background-color: aliceblue;
+  padding-block: var(--padding-600);
+}
 
 .testimonials-container {
   display: grid;
@@ -626,19 +630,18 @@ label {
 
 .accessories__container-page {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
   padding-top: 250px;
 }
 .accessories__box {
   border: 1px dotted rgba(0, 0, 0, 0.527);
   display: grid;
-  gap: var(--gap-400);
+  gap: 12px;
   justify-items: center;
   align-items: center;
   padding-block: var(--padding-400);
-  text-align: center;
   min-width: 275px;
-    margin-inline: auto;
+  margin-inline: auto;
   margin-bottom: var(--margin-400);
 }
 .accessories__head {
@@ -682,7 +685,7 @@ label {
 }
 .container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 
   gap: 4rem;
 }
@@ -782,6 +785,14 @@ label {
     top: 25px;
     right: 20px;
   }
+  .hamburger {
+    font-size: 1.5rem;
+    z-index: 100;
+    border: 1px solid black;
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 16px 20px;
+  }
 
   .hamburger.active {
     display: none;
@@ -868,5 +879,16 @@ label {
     position: relative;
     width: 100%;
     left: 5px;
+  }
+  .accessories__page {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .accessories__container-page {
+    margin-inline: auto;
+    padding-top: 50px;
+  }
+  .filters {
+    padding-top: 150px;
   }
 }
