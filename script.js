@@ -97,7 +97,6 @@ function quantityChange(event) {
   updateCartBadge();
 }
 
-
 // Add to Cart Function
 function addCartClicked(event) {
   var button = event.target.closest(".btn.cart__icon"); // Ensure you get the closest button element
@@ -137,7 +136,7 @@ function addProductToCart(title, price, productImg) {
 
   for (var i = 0; i < cartItemsNames.length; i++) {
     if (cartItemsNames[i].innerText === title) {
-      alert("You have already added item to cart");
+      // alert("You have already added item to cart");
       return;
     }
   }
@@ -323,7 +322,6 @@ function updateLocalStorage() {
 }
 
 // Function Cart Badge
-
 
 // Function to update the cart badge
 function updateCartBadge() {
