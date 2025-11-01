@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Login - Loopstudios VR</title>
+    <style>
+      .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: white;
+        padding-top: 80px;
+      }
+      .login-box {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 350px;
+      }
+      .login-box h2 {
+        color: #3d3491;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.75rem;
+      }
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #333;
+        font-weight: 500;
+      }
+      .form-group input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+      }
+      .form-group input:focus {
+        outline: none;
+        border-color: #3d3491;
+      }
+      .login-btn {
+        width: 100%;
+        padding: 0.75rem;
+        background: #3d3491;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background 0.3s;
+        margin-top: 1rem;
+      }
+      .login-btn:hover {
+        background: #2a2170;
+      }
+      .error-message {
+        color: red;
+        margin-top: 1rem;
+        text-align: center;
+        display: none;
+      }
+      .error-message.show {
+        display: block;
+      }
+      .success-message {
+        color: green;
+        margin-top: 1rem;
+        text-align: center;
+        display: none;
+      }
+      .success-message.show {
+        display: block;
+      }
+      .login-footer {
+        text-align: center;
+        margin-top: 2rem;
+        color: #666;
+        font-size: 0.9rem;
+      }
+      .login-footer a {
+        color: #3d3491;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__bar wrapper">
+        <div class="logo">
+          <a href="index.html"><img src="./images/logo.svg" alt="" /></a>
+        </div>
+        <ul class="nav__links">
+          <li class="links"><a href="index.html">Home</a></li>
+          <li class="links"><a href="index.html#about">About</a></li>
+          <li class="links"><a href="index.html#products">Products</a></li>
+          <li class="links"><a href="accessories.html">Accessories</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="login-container">
+      <div class="login-box">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter your username"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <button type="submit" class="login-btn">Login</button>
+          <div id="errorMessage" class="error-message"></div>
+          <div id="successMessage" class="success-message"></div>
+        </form>
+        <div class="login-footer">
+          <p>Forgot password? <a href="index.html#contact">Contact us</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Intentionally vulnerable login system for security practice
+
+      // Store user credentials in localStorage (INSECURE - for practice only)
+      const users = [
+        { username: "admin", password: "admin123" },
+        { username: "user", password: "password" },
+        { username: "john", password: "welcome2024" },
+        { username: "test", password: "test123" },
+      ];
+
+      // Save credentials on first load
+      if (!localStorage.getItem("storedUsers")) {
+        localStorage.setItem("storedUsers", JSON.stringify(users));
+      }
+
+      // Expose credentials to console (INSECURE - for practice)
+      console.log("=== DEBUG INFO ===");
+      console.log("Stored users:", localStorage.getItem("storedUsers"));
+      console.log("=== END DEBUG ===");
+
+      const loginForm = document.getElementById("loginForm");
+      const errorMessage = document.getElementById("errorMessage");
+      const successMessage = document.getElementById("successMessage");
+
+      loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // Log credentials (INSECURE - for practice)
+        console.log("Login attempt:", { username, password });
+
+        // Simple authentication check
+        const storedUsers = JSON.parse(localStorage.getItem("storedUsers"));
+        const user = storedUsers.find(
+          (u) => u.username === username && u.password === password
+        );
+
+        errorMessage.classList.remove("show");
+        successMessage.classList.remove("show");
+
+        if (user) {
+          successMessage.textContent = `Welcome, ${username}!`;
+          successMessage.classList.add("show");
+
+          // Store session (INSECURE - for practice)
+          localStorage.setItem("currentUser", username);
+          localStorage.setItem("isLoggedIn", "true");
+
+          // Redirect to home page
+          setTimeout(() => {
+            window.location.href = "index.html";
+          }, 1000);
+        } else {
+          errorMessage.textContent = "Invalid username or password!";
+          errorMessage.classList.add("show");
+        }
+      });
+
+      // Allow bypass with URL parameter (INSECURE - for practice)
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("bypass") === "true") {
+        console.log("Bypass enabled - you're in!");
+        localStorage.setItem("currentUser", "admin");
+        localStorage.setItem("isLoggedIn", "true");
+        successMessage.textContent = "Login bypassed! Redirecting...";
+        successMessage.classList.add("show");
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1000);
+      }
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

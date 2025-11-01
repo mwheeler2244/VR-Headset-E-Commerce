@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+  </head>
+  <body class="accessories-page">
+
+     
+        <div class="hamburger">
+          <i class="fa-solid fa-bars" style="color: #000000;"></i>
+        </div>
+        <nav >
+          <div class="nav__bar wrapper">
+          <div class="logo ">
+            <a href="index.html#hero"><img src="./images/logo.svg" alt="" /></a>
+          </div>
+       
+          <div class="mobile__close ">
+            <img src="./images/icon-close.svg" alt="" />
+          </div>
+          <ul class="nav__links ">
+            <li class="links"><a href="index.html#about">About</a></li>
+            <li class="links" ><a href="index.html#products">Products</a></li>
+            <li class="links"><a href="index.html#creations">Creations</a></li>
+            <li class="links"><a href="index.html#contact">Contact</a></li>
+            <li class="links"><a href="login.html">Login</a></li>  
+          </ul>
+        
+        <div class="cart__container">
+            <div class="cart__badge">
+              0
+            </div>
+            <i id="cart-icon" class="fa-solid fa-cart-shopping " data-quantity="0"></i>
+            <!-- Cart Dropdown -->
+            <div id="cart" class="cart">
+
+              <h2 class="cart__title">Your Cart</h2>
+             
+              <div class="cart__content">
+              </div>
+              <div class="total">
+                <p class="total__title">Total: </p>
+                <p class="total__price"></p>
+              </div>
+              <button id="checkoutButton" class="btn checkout-button">Checkout</button>
+              <i id="close__cart" class="fa-solid fa-x cart__close"></i>
+
+            </div>
+        </div>
+    
+    </nav>
+       
+    <main>
+      <section class="accessories__page wrapper">
+        <div class="filters">
+          <p>Filters</p>
+          <p>Category</p>
+          <div class="filters__container">
+            <div>
+              <input type="checkbox" class="check" id="trackers">
+              <label for="trackers">Trackers</label>
+            </div>
+            <div>
+              <input type="checkbox" class="check" id="docks">
+              <label for="docks">Docks</label>
+            </div>
+            <div>
+              <input type="checkbox" class="check" id="dongle">
+              <label for="dongle">Dongle</label>
+            </div>
+          </div>
+        </div>
+   
+        <div class="accessories__container-page" >
+         
+     
+
+        </div>
+      </section>
+    </main>
+    <script src="script.js" ></script>
+  </body>
+</html>
